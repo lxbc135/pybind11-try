@@ -19,17 +19,11 @@ A simple pybind11 example that exposes a C++ `hello` function to Python.
 pixi init
 ```
 
-#### Install Pybind11
+#### Install Dependencies
 
 ```sh
 pixi add pybind11
-```
-
-#### Using scikit-build-core (Recommended)
-
-```bash
-pip install scikit-build-core
-pip install -e .
+pixi add scikit-build-core
 ```
 
 #### Using CMake directly
