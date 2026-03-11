@@ -1,8 +1,17 @@
+[project]
+name = "pybind11-test"
+version = "0.1.0"
+description = "A python extension using pybind11 example"
+requires-python = ">=3.12"
+
 [build-system]
 requires = ["scikit-build-core", "pybind11", "build"]
 build-backend = "scikit_build_core.build"
 
-[project]
-name = "hello-module"
-version = "0.1.0"
-description = "A simple pybind11 example with a hello function"
+[dependency-groups]
+dev = [
+    "build>=1.4.0",
+    "pybind11>=3.0.2",
+    "scikit-build-core>=0.12.2",
+    "wheel>=0.46.3",
+]

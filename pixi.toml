@@ -1,7 +1,7 @@
 [workspace]
 authors = ["lxbc135 <lxbc135@users.noreply.github.com>"]
 channels = ["conda-forge"]
-name = "pybind11-try"
+name = "pybind11-test"
 platforms = ["win-64"]
 version = "0.1.0"
 
