@@ -49,6 +49,27 @@ source .venv/Scripts/activate
 uv sync --group dev
 ```
 
+### CMake
+
+The cmake command needs to call pybind11, which was added to the virtual environment above. So you need to use the virtual environment like this:
+
+```sh
+cd build
+uv run cmake ..
+```
+
+This step is essential, so that `uv build` below does not polute project root with Cmake build artifacts.
+
+To build (shared library):
+
+```bash
+uv run cmake --build . --config Release
+```
+
+It will generate `build/Release/hello.cp314-win_amd64.pyd`.
+`pip install -e .` below will use that.
+But `uv build wheel` below will also build that internally.
+
 ### To build and install in development mode
 
 ```bash
@@ -61,7 +82,7 @@ uv pip install -e .
 ### Try it out:
 
 ```bash
-uv run python -c "import hello; print(hello.hello('world'))"
+python -c "from hello import hello; print(hello('world'))"
 ```
 
 Or use a script:
@@ -85,22 +106,6 @@ uv pip uninstall pybind11-test
 This removes the editable installation from your pixi environment.
 
 ## Release build
-
-The cmake command needs to call pybind11, which was added to the virtual environment above. So you need to use the virtual environment like this:
-
-```sh
-cd build
-uv run cmake ..
-```
-
-> **Note:** Normally, cmake can build like this:
-    ```bash
-    uv run cmake --build . --config Release
-    ```
-    It will generate `build/Release/hello.cp314-win_amd64.pyd`.
-    But we will let `uv build wheel` below to do that internally below.
-
-This step is essential, so that `uv build` below does not polute project root with Cmake build artifacts.
 
 ### To build wheel (whl) for distribution
 
